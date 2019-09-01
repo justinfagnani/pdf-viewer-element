@@ -1,0 +1,11 @@
+/node_modules
+
+# build output
+/*.d.ts
+/*.d.ts.map
+/*.js
+/*.js.map
+/demo/*.d.ts
+/demo/*.d.ts.map
+/demo/*.js
+/demo/*.js.map
