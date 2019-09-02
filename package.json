@@ -9,7 +9,9 @@
     "build": "tsc",
     "serve": "es-dev-server --node-resolve --babel-exclude=**/@bundled-es-modules/pdfjs-dist/build/*"
   },
-  "keywords": ["pdf"],
+  "keywords": [
+    "pdf"
+  ],
   "author": "Justin Fagnani <justin@fagnani.com>",
   "license": "Apache-2.0",
   "repository": {
@@ -19,6 +21,7 @@
   "dependencies": {
     "@bundled-es-modules/pdfjs-dist": "^2.1.266-rc",
     "@types/pdfjs-dist": "^2.1.0",
+    "@types/resize-observer-browser": "^0.1.2",
     "lit-element": "^2.2.1"
   },
   "devDependencies": {

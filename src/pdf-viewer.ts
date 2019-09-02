@@ -6,6 +6,8 @@ import {styles} from './styles.js';
 pdfjs.GlobalWorkerOptions.workerSrc =
     '/node_modules/@bundled-es-modules/pdfjs-dist/build/pdf.worker.min.js';
 
+const ptToPx: number = 96.0 / 72.0;
+
 /**
  * Display PDFs
  * 
@@ -56,6 +58,16 @@ export class PdfViewer extends LitElement {
   })
   multiPage = false;
 
+  @property({
+    attribute: 'scale',
+    reflect: true,
+  })
+  scale = 'fit';
+
+  // TODO: This is the border on div.page make by pdf.js. Where does it come
+  // from, and can we read or set it?
+  private _pageBorderWidth = 9;
+
   private _viewerElement?: HTMLDivElement;
 
   private _pdfViewer?: viewer.PDFViewer;
@@ -63,7 +75,12 @@ export class PdfViewer extends LitElement {
   private _pdfDocument?: any;
 
   // TODO:
-  // private _resizeObserver: ResizeObserver;
+  private _resizeObserver: ResizeObserver = new ResizeObserver(() => this._onResize());
+
+  constructor() {
+    super();
+    this._resizeObserver.observe(this);
+  }
 
   update(changedProperties: PropertyValues) {
     // Right now multiPage is the only property that requires a new viewer
@@ -119,11 +136,15 @@ export class PdfViewer extends LitElement {
         // cMapPacked: CMAP_PACKED,
       });
       loadingTask.promise.then((pdfDocument: any) => {
+        if (this._pdfDocument) {
+          this._pdfDocument.destroy();
+        }
         this._pdfDocument = pdfDocument;
         // Document loaded, specifying document for the viewer and
         // the (optional) linkService.
         this._pdfViewer.setDocument(this._pdfDocument);
         // pdfLinkService.setDocument(pdfDocument, null);
+        this._onResize();
         this.dispatchEvent(new Event('load'));
       }).catch((e: Error) => {
         this.dispatchEvent(new ErrorEvent('error', {
@@ -136,5 +157,23 @@ export class PdfViewer extends LitElement {
         pageNumber: this.page,
       });
     }
+  }
+
+  async _onResize() {
+    if (this._pdfDocument === undefined) {
+      return;
+    }
+    let newScale: number = 1;
+    if (this.scale === 'fit') {
+      const page = await this._pdfDocument.getPage(this._pdfViewer.currentPageNumber);
+      const viewport = page.getViewport({
+        scale: 1,
+        rotation: 0,
+      });
+      const availableWidth = (this.offsetWidth - this._pageBorderWidth * 2);
+      const viewportWidthPx = viewport.width * ptToPx;
+      newScale =  availableWidth / viewportWidthPx;
+    }
+    this._pdfViewer.currentScale = newScale;
   }
 }
