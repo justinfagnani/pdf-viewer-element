@@ -1,11 +1,21 @@
 import {LitElement, html, customElement, property, css} from 'lit-element';
 import {TextField} from '@material/mwc-textfield';
 import '@material/mwc-textfield';
-import '@material/mwc-top-app-bar-fixed';
+import {TopAppBarFixed} from '@material/mwc-top-app-bar-fixed';
 import '../pdf-viewer.js';
 
 import '@material/mwc-switch';
 import {Switch} from '@material/mwc-switch';
+
+@customElement('pdf-viewer-app-bar')
+export class TopAppBar extends TopAppBarFixed {
+  static styles = [TopAppBarFixed.styles, css`
+    .mdc-top-app-bar--fixed-adjust {
+      height: 100%;
+      box-sizing: border-box;
+    }
+  `] as any;
+}
 
 @customElement('pdf-viewer-demo')
 export class PDFViewerDemo extends LitElement {
@@ -14,20 +24,40 @@ export class PDFViewerDemo extends LitElement {
   @property({type: Number}) page = 1;
 
   static styles = css`
+    pdf-viewer-app-bar {
+      height: 100vh;
+      background: #efefef;
+    }
+    #content {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
     #controls {
+      background: white;
       display: flex;
       flex-direction: row;
       align-items: baseline;
       padding: 16px;
+    }
+    #demo-container {
+      flex: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    pdf-viewer {
+      width: 800px;
+      height: 800px;
     }
   `;
 
   render() {
     console.log('demo render', this.multiPage);
     return html`
-      <mwc-top-app-bar-fixed>
+      <pdf-viewer-app-bar>
         <div slot="title">&lt;pdf-viewer> Demo</div>
-        <div>
+        <div id="content">
           <div id="controls">
             <mwc-textfield
               outlined
@@ -50,13 +80,15 @@ export class PDFViewerDemo extends LitElement {
               @change=${this._pageChanged}
             ></mwc-textfield>
           </div>
-          <pdf-viewer
-              src="./f1040.pdf"
-              .page=${this.page}
-              .multiPage=${this.multiPage}
-          ></pdf-viewer>
+          <div id="demo-container">
+            <pdf-viewer
+                src="./f1040.pdf"
+                .page=${this.page}
+                .multiPage=${this.multiPage}
+            ></pdf-viewer>
+          </div>
         </div>
-      </mwc-top-app-bar-fixed>
+      </pdf-viewer-app-bar>
     `;
   }
 

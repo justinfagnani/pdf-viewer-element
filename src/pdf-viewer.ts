@@ -19,6 +19,7 @@ export class PdfViewer extends LitElement {
   static styles = [css`
     :host {
       display: block;
+      overflow: scroll;
       background: var(--pdf-viewer-background, gray);
     }
     #controls {
