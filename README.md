@@ -11,12 +11,24 @@ npm i pdf-viewer-element
 ## Use
 
 ```html
-<script type="module" src="unpkg.com/pdf-viewer-element?module"></script>
+<script type="module" src="node_modules/pdf-viewer-element/pdf-viewer.js"></script>
 
-...
+<!-- ... -->
 
 <pdf-viewer-element src="./my-doc.pdf"></pdf-viewer-element>
 ```
+
+
+### Or from a CDN like unpkg.com:
+
+```html
+<script type="module" src="https://unpkg.com/pdf-viewer-element?module"></script>
+
+<!-- ... -->
+
+<pdf-viewer-element src="./my-doc.pdf"></pdf-viewer-element>
+```
+
 
 # Goals
 
@@ -39,10 +51,9 @@ Why make this?
 
 # TODO
 
-* Built-in controls
 * Controls replaceable via `<slot>`s
 * Tests
 * Pipe events from pdf.js event-bus into DOM elements
-* Options: zoom, rotation, auto-size
+* Options: rotation, auto-size
 * Use ResizeObserver for auto-size
 * Use IntersectionObserver for laziness

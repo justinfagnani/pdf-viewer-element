@@ -16,10 +16,12 @@
     "noImplicitAny": true,
     "noImplicitThis": true,
     "moduleResolution": "node",
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "esModuleInterop": true
   },
   "include": [
-    "src/**/*.ts"
+    "src/**/*.ts",
+    "custom_typings/*.d.ts"
   ],
   "exclude": []
 }
