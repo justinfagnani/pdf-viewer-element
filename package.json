@@ -1,6 +1,6 @@
 {
   "name": "pdf-viewer-element",
-  "version": "0.1.0-pre.2",
+  "version": "0.1.0-pre.3",
   "description": "A web component for displaying PDFs",
   "main": "pdf-viewer.js",
   "module": "pdf-viewer.js",
