@@ -1,0 +1,180 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "pdf-viewer-app-bar",
+      "path": "./src/demo/pdf-viewer-demo.ts",
+      "properties": [
+        {
+          "name": "styles",
+          "default": "[\"styles\",null]"
+        },
+        {
+          "name": "prominent",
+          "type": "boolean"
+        },
+        {
+          "name": "dense",
+          "type": "boolean"
+        },
+        {
+          "name": "centerTitle",
+          "type": "boolean"
+        },
+        {
+          "name": "scrollTarget",
+          "type": "HTMLElement | Window"
+        }
+      ]
+    },
+    {
+      "name": "pdf-viewer-demo",
+      "path": "./src/demo/pdf-viewer-demo.ts",
+      "attributes": [
+        {
+          "name": "src",
+          "type": "string",
+          "default": "\"./f1040.pdf\""
+        },
+        {
+          "name": "multi-page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "page",
+          "type": "number",
+          "default": "1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "src",
+          "attribute": "src",
+          "type": "string",
+          "default": "\"./f1040.pdf\""
+        },
+        {
+          "name": "multiPage",
+          "attribute": "multi-page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "page",
+          "attribute": "page",
+          "type": "number",
+          "default": "1"
+        },
+        {
+          "name": "styles",
+          "type": "CSSResult",
+          "default": "\"css`\\n    pdf-viewer-app-bar {\\n      height: 100vh;\\n      background: #efefef;\\n    }\\n    #content {\\n      display: flex;\\n      flex-direction: column;\\n      height: 100%;\\n    }\\n    #controls {\\n      background: white;\\n      display: flex;\\n      flex-direction: row;\\n      align-items: baseline;\\n      padding: 16px;\\n    }\\n    #demo-container {\\n      flex: auto;\\n      display: flex;\\n      align-items: center;\\n      justify-content: center;\\n    }\\n    pdf-viewer {\\n      width: 800px;\\n      height: 800px;\\n    }\\n  `\""
+        }
+      ]
+    },
+    {
+      "name": "pdf-viewer",
+      "path": "./src/pdf-viewer.ts",
+      "description": "A web component that displays PDFs",
+      "attributes": [
+        {
+          "name": "src",
+          "type": "string | undefined"
+        },
+        {
+          "name": "page",
+          "description": "The current 1-based page number.",
+          "type": "number",
+          "default": "1"
+        },
+        {
+          "name": "multi-page",
+          "description": "Whether multiple pages should render. Single page rendering is much faster.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "scale",
+          "type": "number | \"fit\"",
+          "default": "\"fit\""
+        },
+        {
+          "name": "zoom",
+          "type": "number",
+          "default": "1"
+        },
+        {
+          "name": "documentTitle",
+          "type": "string | undefined"
+        }
+      ],
+      "properties": [
+        {
+          "name": "styles",
+          "type": "CSSResult[]",
+          "default": "[null,\"styles\"]"
+        },
+        {
+          "name": "src",
+          "attribute": "src",
+          "type": "string | undefined"
+        },
+        {
+          "name": "page",
+          "attribute": "page",
+          "description": "The current 1-based page number.",
+          "type": "number",
+          "default": "1"
+        },
+        {
+          "name": "pageCount",
+          "description": "Total page count of the current document."
+        },
+        {
+          "name": "multiPage",
+          "attribute": "multi-page",
+          "description": "Whether multiple pages should render. Single page rendering is much faster.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "scale",
+          "attribute": "scale",
+          "type": "number | \"fit\"",
+          "default": "\"fit\""
+        },
+        {
+          "name": "zoom",
+          "attribute": "zoom",
+          "type": "number",
+          "default": "1"
+        },
+        {
+          "name": "documentTitle",
+          "attribute": "documentTitle",
+          "type": "string | undefined"
+        }
+      ],
+      "events": [
+        {
+          "name": "load"
+        }
+      ],
+      "cssProperties": [
+        {
+          "name": "--pdf-viewer-top-bar-height",
+          "default": "\"48px\""
+        },
+        {
+          "name": "--pdf-viewer-page-shadow",
+          "default": "\"2px 2px 2px 1px rgba(0, 0, 0, 0.2)\""
+        },
+        {
+          "name": "--pdf-viewer-background",
+          "default": "\"gray\""
+        }
+      ]
+    }
+  ]
+}

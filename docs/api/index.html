@@ -1,0 +1,256 @@
+
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><pdf-viewer> ⌲ Docs</title>
+    <link rel="stylesheet" href="../docs.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600|Roboto+Mono">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&display=block">
+    <link href="../prism-okaidia.css" rel="stylesheet" />
+    <script type="module" src="../pdf-viewer.bundled.js"></script>
+  </head>
+  <body>
+    
+<header>
+  <h1>&lt;my-element></h1>
+  <h2>A web component just for me.</h2>
+</header>
+    
+<nav>
+  <a href="../">Home</a>
+  <a href="../examples/">Examples</a>
+  <a href="">API</a>
+  <a href="../install/">Install</a>
+</nav>
+    <div id="main-wrapper">
+      <main>
+        
+      <h1>API</h1>
+      
+        <h2>&lt;pdf-viewer-app-bar></h2>
+        <div>
+          undefined
+        </div>
+        
+        
+    <h3>Properties</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Attribute</th><th>Description</th><th>Type</th><th>Default</th>
+      </tr>
+      
+        <tr>
+          <td>styles</td><td>undefined</td><td>undefined</td><td>undefined</td><td>["styles",null]</td>
+        </tr>
+      
+        <tr>
+          <td>prominent</td><td>undefined</td><td>undefined</td><td>boolean</td><td>undefined</td>
+        </tr>
+      
+        <tr>
+          <td>dense</td><td>undefined</td><td>undefined</td><td>boolean</td><td>undefined</td>
+        </tr>
+      
+        <tr>
+          <td>centerTitle</td><td>undefined</td><td>undefined</td><td>boolean</td><td>undefined</td>
+        </tr>
+      
+        <tr>
+          <td>scrollTarget</td><td>undefined</td><td>undefined</td><td>HTMLElement | Window</td><td>undefined</td>
+        </tr>
+      
+    </table>
+    
+        
+            
+          
+        
+        
+        
+        <h2>&lt;pdf-viewer-demo></h2>
+        <div>
+          undefined
+        </div>
+        
+    <h3>Attributes</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Description</th><th>Type</th><th>Default</th>
+      </tr>
+      
+        <tr>
+          <td>src</td><td>undefined</td><td>string</td><td>"./f1040.pdf"</td>
+        </tr>
+      
+        <tr>
+          <td>multi-page</td><td>undefined</td><td>boolean</td><td>false</td>
+        </tr>
+      
+        <tr>
+          <td>page</td><td>undefined</td><td>number</td><td>1</td>
+        </tr>
+      
+    </table>
+  
+        
+    <h3>Properties</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Attribute</th><th>Description</th><th>Type</th><th>Default</th>
+      </tr>
+      
+        <tr>
+          <td>src</td><td>src</td><td>undefined</td><td>string</td><td>"./f1040.pdf"</td>
+        </tr>
+      
+        <tr>
+          <td>multiPage</td><td>multi-page</td><td>undefined</td><td>boolean</td><td>false</td>
+        </tr>
+      
+        <tr>
+          <td>page</td><td>page</td><td>undefined</td><td>number</td><td>1</td>
+        </tr>
+      
+        <tr>
+          <td>styles</td><td>undefined</td><td>undefined</td><td>CSSResult</td><td>"css`\n    pdf-viewer-app-bar {\n      height: 100vh;\n      background: #efefef;\n    }\n    #content {\n      display: flex;\n      flex-direction: column;\n      height: 100%;\n    }\n    #controls {\n      background: white;\n      display: flex;\n      flex-direction: row;\n      align-items: baseline;\n      padding: 16px;\n    }\n    #demo-container {\n      flex: auto;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n    }\n    pdf-viewer {\n      width: 800px;\n      height: 800px;\n    }\n  `"</td>
+        </tr>
+      
+    </table>
+    
+        
+            
+          
+        
+        
+        
+        <h2>&lt;pdf-viewer></h2>
+        <div>
+          A web component that displays PDFs
+        </div>
+        
+    <h3>Attributes</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Description</th><th>Type</th><th>Default</th>
+      </tr>
+      
+        <tr>
+          <td>src</td><td>undefined</td><td>string | undefined</td><td>undefined</td>
+        </tr>
+      
+        <tr>
+          <td>page</td><td>The current 1-based page number.</td><td>number</td><td>1</td>
+        </tr>
+      
+        <tr>
+          <td>multi-page</td><td>Whether multiple pages should render. Single page rendering is much faster.</td><td>boolean</td><td>false</td>
+        </tr>
+      
+        <tr>
+          <td>scale</td><td>undefined</td><td>number | "fit"</td><td>"fit"</td>
+        </tr>
+      
+        <tr>
+          <td>zoom</td><td>undefined</td><td>number</td><td>1</td>
+        </tr>
+      
+        <tr>
+          <td>documentTitle</td><td>undefined</td><td>string | undefined</td><td>undefined</td>
+        </tr>
+      
+    </table>
+  
+        
+    <h3>Properties</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Attribute</th><th>Description</th><th>Type</th><th>Default</th>
+      </tr>
+      
+        <tr>
+          <td>styles</td><td>undefined</td><td>undefined</td><td>CSSResult[]</td><td>[null,"styles"]</td>
+        </tr>
+      
+        <tr>
+          <td>src</td><td>src</td><td>undefined</td><td>string | undefined</td><td>undefined</td>
+        </tr>
+      
+        <tr>
+          <td>page</td><td>page</td><td>The current 1-based page number.</td><td>number</td><td>1</td>
+        </tr>
+      
+        <tr>
+          <td>pageCount</td><td>undefined</td><td>Total page count of the current document.</td><td>undefined</td><td>undefined</td>
+        </tr>
+      
+        <tr>
+          <td>multiPage</td><td>multi-page</td><td>Whether multiple pages should render. Single page rendering is much faster.</td><td>boolean</td><td>false</td>
+        </tr>
+      
+        <tr>
+          <td>scale</td><td>scale</td><td>undefined</td><td>number | "fit"</td><td>"fit"</td>
+        </tr>
+      
+        <tr>
+          <td>zoom</td><td>zoom</td><td>undefined</td><td>number</td><td>1</td>
+        </tr>
+      
+        <tr>
+          <td>documentTitle</td><td>documentTitle</td><td>undefined</td><td>string | undefined</td><td>undefined</td>
+        </tr>
+      
+    </table>
+    
+        
+        
+    <h3>Events</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Description</th>
+      </tr>
+      
+        <tr>
+          <td>load</td><td>undefined</td>
+        </tr>
+      
+    </table>
+      
+          
+        
+        
+    <h3>CSS Custom Properties</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Description</th>
+      </tr>
+      
+        <tr>
+          <td>--pdf-viewer-top-bar-height</td><td>undefined</td>
+        </tr>
+      
+        <tr>
+          <td>--pdf-viewer-page-shadow</td><td>undefined</td>
+        </tr>
+      
+        <tr>
+          <td>--pdf-viewer-background</td><td>undefined</td>
+        </tr>
+      
+    </table>
+  
+        
+    
+      </main>
+    </div>
+    
+<footer>
+  <p>
+    Made with
+    <a href="https://github.com/PolymerLabs/lit-element-starter-ts">lit-element-starter-ts</a>
+  </p>
+</footer>
+  </body>
+</html>
