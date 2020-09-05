@@ -124,11 +124,11 @@ export class PDFViewerElement extends LitElement {
    * Total page count of the current document.
    */
   get pageCount() {
-    return this._display?.pageCount;
+    return this._display?.pageCount ?? 0;
   }
 
   get documentTitle() {
-    return this._display?.documentTitle;
+    return this._display?.documentTitle ?? '';
   }
 
   render() {
