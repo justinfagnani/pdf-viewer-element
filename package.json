@@ -29,7 +29,10 @@
     "checksize": "rollup -c ; cat pdf-viewer.bundled.js | gzip -9 | wc -c ; rm pdf-viewer.bundled.js"
   },
   "keywords": [
-    "pdf"
+    "pdf",
+    "custom element",
+    "web component",
+    "lit"
   ],
   "author": "Justin Fagnani <justin@fagnani.com>",
   "license": "Apache-2.0",
