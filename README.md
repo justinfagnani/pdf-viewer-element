@@ -1,6 +1,10 @@
 # `<pdf-viewer>`
 
-A web component for displaying PDFs
+`<pdf-viewer>` is a custom HTML element that displays PDFs, much like an `<img>` tag.
+
+`<pdf-viewer>` is a drop-in PDF viewer. It works in plain HTML documents, and in frameworks with declararive templating like React, Vue, Angular, Lit, or Svelte.
+
+`<pdf-viewer>` is built with [PDF.js](https://github.com/mozilla/pdf.js), which renders PDFs with JavaScript. PDF.js is maintained by Mozilla and powers Firefox's built-in PDF viewer.
 
 ## Install
 
