@@ -1,4 +1,4 @@
-import {css} from 'lit-element';
+import {css} from 'lit';
 
 export const styles = css`
   /* Copyright 2014 Mozilla Foundation

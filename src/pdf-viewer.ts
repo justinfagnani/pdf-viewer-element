@@ -1,10 +1,11 @@
 /**
  * Copyright 2019 Justin Fagnani <justin@fagnani.com>
  */
-import {LitElement, html, css, property, customElement, query} from 'lit-element';
-import './pdf-viewer-display.js';
+import {LitElement, html, css} from 'lit';
+import {property, customElement, query} from 'lit/decorators.js';
 import '@material/mwc-fab';
 import '@material/mwc-icon-button';
+import './pdf-viewer-display.js';
 import { PDFViewerDisplayElement } from './pdf-viewer-display.js';
 
 /**

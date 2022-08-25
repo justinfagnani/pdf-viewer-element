@@ -1,7 +1,9 @@
 /**
  * Copyright 2019 Justin Fagnani <justin@fagnani.com>
  */
-import {LitElement, html, css, property, customElement, PropertyValues, query} from 'lit-element';
+import {LitElement, html, css, PropertyValues, CSSResultGroup} from 'lit';
+import {property, customElement, query} from 'lit/decorators.js';
+
 import pdfjs from '@bundled-es-modules/pdfjs-dist';
 import viewer from "@bundled-es-modules/pdfjs-dist/web/pdf_viewer";
 import {styles} from './lib/styles.js';
@@ -44,7 +46,7 @@ export class PDFViewerDisplayElement extends LitElement {
     .canvasWrapper {
       box-shadow: var(--pdf-viewer-page-shadow);
     }
-  `];
+  `] as CSSResultGroup;
 
   @property({type: String, reflect: true})
   src?: string;
