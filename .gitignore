@@ -1,6 +1,7 @@
 /node_modules
 
 # build output
+/lib/
 /*.d.ts
 /*.d.ts.map
 /*.js
