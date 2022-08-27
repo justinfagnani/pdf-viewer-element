@@ -1,12 +1,15 @@
 /**
  * Copyright 2019 Justin Fagnani <justin@fagnani.com>
  */
-import {LitElement, html, css} from 'lit';
+import {LitElement, html, css, PropertyValues} from 'lit';
 import {property, customElement, query} from 'lit/decorators.js';
 import '@material/mwc-fab';
 import '@material/mwc-icon-button';
 import './pdf-viewer-display.js';
 import { PDFViewerDisplayElement } from './pdf-viewer-display.js';
+import './pdf-viewer-toolbar.js';
+import {ContextProvider} from '@lit-labs/context';
+import { viewerContext } from './viewer-context.js';
 
 /**
  * A web component that displays PDFs
@@ -46,38 +49,6 @@ export class PDFViewerElement extends LitElement {
     #controls > * {
       user-select: initial;
       pointer-events: initial;
-    }
-    #top-bar {
-      top: 0;
-      height: var(--pdf-viewer-top-bar-height);
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      color: var(--mdc-theme-on-primary, white);
-      background: var(--mdc-theme-primary, #37474f);
-      /* From https://github.com/material-components/material-components-web/blob/8d8f3fcb3f2940b071f761497490c1b0123e106b/packages/mdc-typography/_variables.scss */
-      font-family: Roboto, sans-serif;
-      font-size: 1rem;
-      line-height: 2rem;
-      font-weight: medium;
-      letter-spacing: 1.25;
-      /* 10px is the same as the content margin */
-      padding: 0 10px;
-    }
-    #top-bar > * {
-      flex: 1;
-    }
-    #page-number {
-      text-align: center;
-      vertical-align: middle;
-    }
-    #nav {
-      text-align: right;
-      --mdc-icon-button-size: 36px;
-    }
-    #title {
-      text-align: center;
     }
     #zoom-out {
       position: absolute;
@@ -132,30 +103,14 @@ export class PDFViewerElement extends LitElement {
     return this._display?.documentTitle ?? '';
   }
 
+  constructor() {
+    super();
+    new ContextProvider(this, viewerContext, this);
+  }
+
   render() {
     return html`
-      <div id="top-bar">
-        <span id="">
-          <!-- <mwc-icon-button id="drawer"
-            icon="menu" 
-            mini>
-          </mwc-icon-button> -->
-        </span>
-        <span id="title">${this.documentTitle}</span>
-        <span id="nav">
-          <mwc-icon-button id="prev"
-            icon="navigate_before" 
-            mini
-            @click=${this.previousPage}>
-          </mwc-icon-button>
-          <span id="page-number">${this.page} / ${this.pageCount}</span>
-          <mwc-icon-button id="next"
-              icon="navigate_next" 
-              mini
-              @click=${this.nextPage}>
-          </mwc-icon-button>
-        </span>
-      </div>
+      <slot name="toolbar"><pdf-viewer-toolbar></pdf-viewer-toolbar></slot>
       <pdf-viewer-display
         .src=${this.src}
         .page=${this.page}
@@ -179,9 +134,16 @@ export class PDFViewerElement extends LitElement {
       </div>`;
   }
 
+  updated(changedProperties: PropertyValues<this>) {
+    if (changedProperties.has('page')) {
+      this.dispatchEvent(new Event('change'));
+    }
+  }
+
   _onLoad() {
     console.log('_onLoad');
     this.requestUpdate();
+    this.dispatchEvent(new Event('change'));
   }
 
   zoomOut() {
