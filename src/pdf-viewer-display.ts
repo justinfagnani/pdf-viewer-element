@@ -105,6 +105,9 @@ export class PDFViewerDisplayElement extends LitElement {
 
   private _resizeObserver: ResizeObserver = new ResizeObserver(() => this._onResize());
 
+  private _eventBus = new viewer.EventBus();
+
+
   constructor() {
     super();
     this._resizeObserver.observe(this);
@@ -129,7 +132,8 @@ export class PDFViewerDisplayElement extends LitElement {
       } else {
         this._pdfViewer = new viewer.PDFSinglePageViewer({
           container,
-          viewer: this._viewerElement,
+          eventBus: this._eventBus,
+          // viewer: this._viewerElement,
           // linkService: pdfLinkService,
           // findController: pdfFindController,        
         });
