@@ -1,11 +1,12 @@
-import {LitElement, html, customElement, property, css} from 'lit-element';
+import {LitElement, html, css} from 'lit';
+import {customElement, property} from 'lit/decorators.js';
 import {TextField} from '@material/mwc-textfield';
 import '@material/mwc-textfield';
 import {TopAppBarFixed} from '@material/mwc-top-app-bar-fixed';
 import '../pdf-viewer.js';
 
 import '@material/mwc-switch';
-import {Switch} from '@material/mwc-switch';
+import type {Switch} from '@material/mwc-switch';
 
 @customElement('pdf-viewer-app-bar')
 export class TopAppBar extends TopAppBarFixed {
@@ -68,7 +69,7 @@ export class PDFViewerDemo extends LitElement {
             ></mwc-textfield>
 
             <mwc-switch
-              .checked=${this.multiPage}
+              .selected=${this.multiPage}
               @change=${this._multiPageChanged}
             >multi-page</mwc-switch>
 
@@ -101,7 +102,7 @@ export class PDFViewerDemo extends LitElement {
   }
 
   _multiPageChanged(e: Event) {
-    this.multiPage = (e.target as Switch).checked;
+    this.multiPage = (e.target as Switch).selected;
   }
 
 }

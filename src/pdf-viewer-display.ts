@@ -195,7 +195,7 @@ export class PDFViewerDisplayElement extends LitElement {
       // pdfLinkService.setDocument(pdfDocument, null);
       const metadata = await pdfDocument.getMetadata();
       console.log({metadata});
-      this.documentTitle = metadata.info.Title;
+      this.documentTitle = (metadata.info as any).Title;
       await this.requestUpdate();
       this.dispatchEvent(new Event('load'));
     } catch (e) {
