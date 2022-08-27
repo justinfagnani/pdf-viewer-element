@@ -2,8 +2,8 @@
   "name": "pdf-viewer-element",
   "version": "0.1.0-pre.4",
   "description": "A web component for displaying PDFs",
-  "main": "pdf-viewer.js",
-  "module": "pdf-viewer.js",
+  "main": "index.js",
+  "module": "index.js",
   "type": "module",
   "scripts": {
     "build": "tsc",

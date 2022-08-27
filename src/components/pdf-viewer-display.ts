@@ -6,7 +6,7 @@ import {property, customElement, query} from 'lit/decorators.js';
 
 import pdfjs from '@bundled-es-modules/pdfjs-dist';
 import viewer from "@bundled-es-modules/pdfjs-dist/web/pdf_viewer";
-import {styles} from './lib/styles.js';
+import {styles} from '../lib/styles.js';
 
 pdfjs.GlobalWorkerOptions.workerSrc =
     '/node_modules/@bundled-es-modules/pdfjs-dist/build/pdf.worker.min.js';
@@ -106,7 +106,6 @@ export class PDFViewerDisplayElement extends LitElement {
   private _resizeObserver: ResizeObserver = new ResizeObserver(() => this._onResize());
 
   private _eventBus = new viewer.EventBus();
-
 
   constructor() {
     super();

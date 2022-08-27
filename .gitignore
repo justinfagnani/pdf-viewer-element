@@ -2,6 +2,7 @@
 
 # build output
 /lib/
+/components/
 /*.d.ts
 /*.d.ts.map
 /*.js

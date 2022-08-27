@@ -3,7 +3,7 @@ import {customElement, property} from 'lit/decorators.js';
 import {TextField} from '@material/mwc-textfield';
 import '@material/mwc-textfield';
 import {TopAppBarFixed} from '@material/mwc-top-app-bar-fixed';
-import '../pdf-viewer.js';
+import '../components/pdf-viewer.js';
 
 import '@material/mwc-switch';
 import type {Switch} from '@material/mwc-switch';
