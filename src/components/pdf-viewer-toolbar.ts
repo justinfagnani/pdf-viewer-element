@@ -1,14 +1,14 @@
 /**
  * Copyright 2019 Justin Fagnani <justin@fagnani.com>
  */
-import { LitElement, html, css, PropertyValues } from "lit";
-import { customElement, state } from "lit/decorators.js";
-import "@material/mwc-icon-button";
-import { contextProvided } from "@lit-labs/context";
-import type { PDFViewerElement } from "./pdf-viewer.js";
-import { viewerContext } from "./viewer-context.js";
+import {LitElement, html, css, PropertyValues} from 'lit';
+import {customElement, state} from 'lit/decorators.js';
+import '@material/mwc-icon-button';
+import {contextProvided} from '@lit-labs/context';
+import type {PDFViewerElement} from './pdf-viewer.js';
+import {viewerContext} from './viewer-context.js';
 
-@customElement("pdf-viewer-toolbar")
+@customElement('pdf-viewer-toolbar')
 export class PDFViewerToolbarElement extends LitElement {
   static styles = css`
     :host {
@@ -45,7 +45,7 @@ export class PDFViewerToolbarElement extends LitElement {
     }
   `;
 
-  @contextProvided({ context: viewerContext })
+  @contextProvided({context: viewerContext})
   @state()
   _viewer: PDFViewerElement | undefined;
 
@@ -60,14 +60,14 @@ export class PDFViewerToolbarElement extends LitElement {
         oldViewer.removeEventListener('change', this._onViewerChange);
       }
       if (this._viewer !== undefined) {
-        this._viewer.addEventListener('change', this._onViewerChange);        
+        this._viewer.addEventListener('change', this._onViewerChange);
       }
     }
   }
 
   private _onViewerChange = () => {
     this.requestUpdate();
-  }
+  };
 
   render() {
     return html`

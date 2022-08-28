@@ -11,12 +11,15 @@ import '@material/mwc-formfield';
 
 @customElement('pdf-viewer-app-bar')
 export class TopAppBar extends TopAppBarFixed {
-  static styles = [TopAppBarFixed.styles, css`
-    .mdc-top-app-bar--fixed-adjust {
-      height: 100%;
-      box-sizing: border-box;
-    }
-  `] as any;
+  static styles = [
+    TopAppBarFixed.styles,
+    css`
+      .mdc-top-app-bar--fixed-adjust {
+        height: 100%;
+        box-sizing: border-box;
+      }
+    `,
+  ] as any;
 }
 
 @customElement('pdf-viewer-demo')
@@ -92,10 +95,10 @@ export class PDFViewerDemo extends LitElement {
           </div>
           <div id="demo-container">
             <pdf-viewer
-                .hideToolbar=${this.hideToolbar}
-                src="./f1040.pdf"
-                .page=${this.page}
-                .multiPage=${this.multiPage}
+              .hideToolbar=${this.hideToolbar}
+              src="./f1040.pdf"
+              .page=${this.page}
+              .multiPage=${this.multiPage}
             ></pdf-viewer>
           </div>
         </div>

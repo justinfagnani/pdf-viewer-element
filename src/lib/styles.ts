@@ -24,7 +24,7 @@ export const styles = css`
     bottom: 0;
     overflow: hidden;
     opacity: 0.2;
-    line-height: 1.0;
+    line-height: 1;
   }
 
   .textLayer > span {
@@ -33,7 +33,7 @@ export const styles = css`
     white-space: pre;
     cursor: text;
     -webkit-transform-origin: 0% 0%;
-            transform-origin: 0% 0%;
+    transform-origin: 0% 0%;
   }
 
   .textLayer .highlight {
@@ -60,9 +60,13 @@ export const styles = css`
     background-color: rgb(0, 100, 0);
   }
 
-  .textLayer ::-moz-selection { background: rgb(0,0,255); }
+  .textLayer ::-moz-selection {
+    background: rgb(0, 0, 255);
+  }
 
-  .textLayer ::selection { background: rgb(0,0,255); }
+  .textLayer ::selection {
+    background: rgb(0, 0, 255);
+  }
 
   .textLayer .endOfContent {
     display: block;
@@ -74,15 +78,14 @@ export const styles = css`
     z-index: -1;
     cursor: default;
     -webkit-user-select: none;
-      -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
 
   .textLayer .endOfContent.active {
     top: 0px;
   }
-
 
   .annotationLayer section {
     position: absolute;
@@ -183,12 +186,12 @@ export const styles = css`
 
   .annotationLayer .buttonWidgetAnnotation.checkBox input:checked:before {
     -webkit-transform: rotate(45deg);
-            transform: rotate(45deg);
+    transform: rotate(45deg);
   }
 
   .annotationLayer .buttonWidgetAnnotation.checkBox input:checked:after {
     -webkit-transform: rotate(-45deg);
-            transform: rotate(-45deg);
+    transform: rotate(-45deg);
   }
 
   .annotationLayer .buttonWidgetAnnotation.radioButton input:checked:before {
@@ -218,8 +221,8 @@ export const styles = css`
   .annotationLayer .buttonWidgetAnnotation.checkBox input,
   .annotationLayer .buttonWidgetAnnotation.radioButton input {
     -webkit-appearance: none;
-      -moz-appearance: none;
-            appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     padding: 0;
   }
 
@@ -232,7 +235,7 @@ export const styles = css`
     position: absolute;
     z-index: 200;
     max-width: 20em;
-    background-color: #FFFF99;
+    background-color: #ffff99;
     box-shadow: 0px 2px 5px #888;
     border-radius: 2px;
     padding: 6px;
@@ -293,8 +296,8 @@ export const styles = css`
     border: 9px solid transparent;
     background-clip: content-box;
     -webkit-border-image: url(images/shadow.png) 9 9 repeat;
-        -o-border-image: url(images/shadow.png) 9 9 repeat;
-            border-image: url(images/shadow.png) 9 9 repeat;
+    -o-border-image: url(images/shadow.png) 9 9 repeat;
+    border-image: url(images/shadow.png) 9 9 repeat;
     background-color: white;
   }
 
@@ -312,13 +315,16 @@ export const styles = css`
     border: none;
   }
 
-  .pdfViewer.scrollHorizontal, .pdfViewer.scrollWrapped, .spread {
+  .pdfViewer.scrollHorizontal,
+  .pdfViewer.scrollWrapped,
+  .spread {
     margin-left: 3.5px;
     margin-right: 3.5px;
     text-align: center;
   }
 
-  .pdfViewer.scrollHorizontal, .spread {
+  .pdfViewer.scrollHorizontal,
+  .spread {
     white-space: nowrap;
   }
 

@@ -1,15 +1,15 @@
 /**
  * Copyright 2019 Justin Fagnani <justin@fagnani.com>
  */
-import { LitElement, html, css, PropertyValues } from "lit";
-import { property, customElement, query } from "lit/decorators.js";
-import "@material/mwc-fab";
-import "@material/mwc-icon-button";
-import "./pdf-viewer-display.js";
-import { PDFViewerDisplayElement } from "./pdf-viewer-display.js";
-import "./pdf-viewer-toolbar.js";
-import { ContextProvider } from "@lit-labs/context";
-import { viewerContext } from "./viewer-context.js";
+import {LitElement, html, css, PropertyValues} from 'lit';
+import {property, customElement, query} from 'lit/decorators.js';
+import '@material/mwc-fab';
+import '@material/mwc-icon-button';
+import './pdf-viewer-display.js';
+import {PDFViewerDisplayElement} from './pdf-viewer-display.js';
+import './pdf-viewer-toolbar.js';
+import {ContextProvider} from '@lit-labs/context';
+import {viewerContext} from './viewer-context.js';
 
 /**
  * A web component that displays PDFs
@@ -18,7 +18,7 @@ import { viewerContext } from "./viewer-context.js";
  * @cssprop [--pdf-viewer-page-shadow=2px 2px 2px 1px rgba(0, 0, 0, 0.2)]
  * @cssprop [--pdf-viewer-background=gray]
  */
-@customElement("pdf-viewer")
+@customElement('pdf-viewer')
 export class PDFViewerElement extends LitElement {
   static styles = css`
     :host {
@@ -62,23 +62,23 @@ export class PDFViewerElement extends LitElement {
     }
   `;
 
-  @query("pdf-viewer-display")
+  @query('pdf-viewer-display')
   private _display?: PDFViewerDisplayElement;
 
-  @property({ type: String, reflect: true })
+  @property({type: String, reflect: true})
   src?: string;
 
   /**
    * The current 1-based page number.
    */
-  @property({ type: Number, reflect: true })
+  @property({type: Number, reflect: true})
   page: number = 1;
 
   /**
    * Whether multiple pages should render. Single page rendering is much faster.
    */
   @property({
-    attribute: "multi-page",
+    attribute: 'multi-page',
     type: Boolean,
     reflect: true,
   })
@@ -87,12 +87,12 @@ export class PDFViewerElement extends LitElement {
   @property({
     reflect: true,
   })
-  scale: number | "cover" | "contain" = "cover";
+  scale: number | 'cover' | 'contain' = 'cover';
 
-  @property({ type: Number, reflect: true })
+  @property({type: Number, reflect: true})
   zoom: number = 1;
 
-  @property({ type: Boolean, reflect: true, attribute: "hide-toolbar" })
+  @property({type: Boolean, reflect: true, attribute: 'hide-toolbar'})
   hideToolbar = false;
 
   /**
@@ -103,7 +103,7 @@ export class PDFViewerElement extends LitElement {
   }
 
   get documentTitle() {
-    return this._display?.documentTitle ?? "";
+    return this._display?.documentTitle ?? '';
   }
 
   constructor() {
@@ -132,15 +132,15 @@ export class PDFViewerElement extends LitElement {
   }
 
   updated(changedProperties: PropertyValues<this>) {
-    if (changedProperties.has("page")) {
-      this.dispatchEvent(new Event("change"));
+    if (changedProperties.has('page')) {
+      this.dispatchEvent(new Event('change'));
     }
   }
 
   _onLoad() {
-    console.log("_onLoad");
+    console.log('_onLoad');
     this.requestUpdate();
-    this.dispatchEvent(new Event("change"));
+    this.dispatchEvent(new Event('change'));
   }
 
   zoomOut() {
