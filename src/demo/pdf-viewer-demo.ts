@@ -7,6 +7,7 @@ import '../components/pdf-viewer.js';
 
 import '@material/mwc-switch';
 import type {Switch} from '@material/mwc-switch';
+import '@material/mwc-formfield';
 
 @customElement('pdf-viewer-app-bar')
 export class TopAppBar extends TopAppBarFixed {
@@ -23,6 +24,7 @@ export class PDFViewerDemo extends LitElement {
   @property() src: string = './f1040.pdf';
   @property({attribute: 'multi-page', type: Boolean}) multiPage = false;
   @property({type: Number}) page = 1;
+  @property({type: Boolean}) hideToolbar = false;
 
   static styles = css`
     pdf-viewer-app-bar {
@@ -31,13 +33,14 @@ export class PDFViewerDemo extends LitElement {
     }
     #content {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       height: 100%;
     }
     #controls {
       background: white;
       display: flex;
-      flex-direction: row;
+      gap: 8px;
+      flex-direction: column;
       align-items: baseline;
       padding: 16px;
     }
@@ -67,12 +70,12 @@ export class PDFViewerDemo extends LitElement {
               .value=${this.src}
               @change=${this._srcChanged}
             ></mwc-textfield>
-
-            <mwc-switch
-              .selected=${this.multiPage}
-              @change=${this._multiPageChanged}
-            >multi-page</mwc-switch>
-
+            <mwc-formfield label="Multipage">
+              <mwc-switch
+                .selected=${this.multiPage}
+                @click=${this._multiPageChanged}
+              ></mwc-switch>
+            </mwc-formfield>
             <mwc-textfield
               outlined
               label="page"
@@ -80,9 +83,16 @@ export class PDFViewerDemo extends LitElement {
               .value=${String(this.page)}
               @change=${this._pageChanged}
             ></mwc-textfield>
+            <mwc-formfield label="Hide Toolbar">
+              <mwc-switch
+                .selected=${this.hideToolbar}
+                @click=${this._hideToolbarChanged}
+              ></mwc-switch>
+            </mwc-formfield>
           </div>
           <div id="demo-container">
             <pdf-viewer
+                .hideToolbar=${this.hideToolbar}
                 src="./f1040.pdf"
                 .page=${this.page}
                 .multiPage=${this.multiPage}
@@ -105,4 +115,8 @@ export class PDFViewerDemo extends LitElement {
     this.multiPage = (e.target as Switch).selected;
   }
 
+  _hideToolbarChanged(e: Event) {
+    console.log('_hideToolbarChanged', (e.target as Switch).selected);
+    this.hideToolbar = (e.target as Switch).selected;
+  }
 }

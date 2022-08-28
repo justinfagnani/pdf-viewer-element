@@ -117,14 +117,17 @@ export class PDFViewerDisplayElement extends LitElement {
   }
 
   async updated(changedProperties: PropertyValues) {
+    let setScale = false;
     if (changedProperties.has('multiPage')) {
+      setScale = true;
       const container = this.shadowRoot!.querySelector('#container') as HTMLElement;
       // When multiPage changes we must make a new viewer element.
       container.innerHTML = '<div id="viewer" class="pdfViewer"></div>';
       if (this.multiPage) {
         this._pdfViewer = new viewer.PDFViewer({
           container,
-          viewer: this._viewerElement,
+          eventBus: this._eventBus,
+          viewer: this._viewerElement,          
           // linkService: pdfLinkService,
           // findController: pdfFindController,        
         });
@@ -155,6 +158,7 @@ export class PDFViewerDisplayElement extends LitElement {
 
     if (this._pdfDocument !== undefined) {
       if (this._currentScale === undefined || changedProperties.has('scale')) {
+        setScale = true;
         if (this.scale === 'cover' || this.scale === 'contain') {
           const page = await this._pdfDocument.getPage(this._pdfViewer.currentPageNumber);
           const viewport = page.getViewport({
@@ -176,7 +180,10 @@ export class PDFViewerDisplayElement extends LitElement {
           this._currentScale = this.scale;
         }
       }
-      this._pdfViewer.currentScale = this._currentScale * this.zoom;
+      if (setScale) {
+        // TODO: if the viewer is new we have to wait for "pagesinit"?
+        this._pdfViewer.currentScale = this._currentScale * this.zoom;
+      }
     }
   }
 
