@@ -44,7 +44,7 @@
     "lit": "^2.3.1"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^0.9.0",
+    "@11ty/eleventy": "^1.0.2",
     "@11ty/eleventy-plugin-syntaxhighlight": "^2.0.3",
     "@material/mwc-formfield": "^0.27.0",
     "@material/mwc-switch": "^0.27.0",
